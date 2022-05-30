@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         float y = values[1];
         float z = values[2];
 
-        float accelationSquareRoot = (x*x+y*y+z*z)/ (SensorManager.GRAVITY_EARTH*SensorManager.GRAVITY_EARTH);
+        float accelationSquareRoot = (x * x + y * y + z * z) / (SensorManager.GRAVITY_EARTH * SensorManager.GRAVITY_EARTH);
 
         long actualTime = System.currentTimeMillis();
-        Toast.makeText(getApplicationContext(), String.valueOf(accelationSquareRoot)+" "+
+        Toast.makeText(getApplicationContext(), String.valueOf(accelationSquareRoot) + " " +
                 SensorManager.GRAVITY_EARTH, Toast.LENGTH_SHORT).show();
 
         if (accelationSquareRoot >= 2) //it will be executed if you shuffle
@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
             isColor = !isColor;
         }
-        
-        @Override
+    }
+    @Override
     protected void onResume() {
         super.onResume();
         sensorManager.registerListener(this,sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
