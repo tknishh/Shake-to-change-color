@@ -10,7 +10,9 @@ Vani Seth 201B299
 Tanish Khandelwal 201B283
 
 
+## Sensors Overview
 
+You can access these sensors and acquire raw sensor data by using the Android sensor framework. The sensor framework is part of the android.hardware package and includes the following classes and interfaces.
 
 
 ## Bibliography:
