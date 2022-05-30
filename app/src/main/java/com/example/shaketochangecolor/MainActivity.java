@@ -7,6 +7,8 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
     private SensorManager sensorManager;
@@ -32,3 +34,35 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
 
     }
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
+
+    private void getAccelerometer(SensorEvent sensorEvent) {
+        float[] values = sensorEvent.values;
+        float x = values[0];
+        float y = values[1];
+        float z = values[2];
+
+        float accelationSquareRoot = (x*x+y*y+z*z)/ (SensorManager.GRAVITY_EARTH*SensorManager.GRAVITY_EARTH);
+
+        long actualTime = System.currentTimeMillis();
+        Toast.makeText(getApplicationContext(), String.valueOf(accelationSquareRoot)+" "+
+                SensorManager.GRAVITY_EARTH, Toast.LENGTH_SHORT).show();
+
+        if (accelationSquareRoot >= 2) //it will be executed if you shuffle
+        {
+
+            if (actualTime - lastUpdate < 200) {
+                return;
+            }
+            lastUpdate = actualTime;//updating lastUpdate for next shuffle
+            if (isColor) {
+                view.setBackgroundColor(Color.GREEN);
+
+            } else {
+                view.setBackgroundColor(Color.RED);
+            }
+            isColor = !isColor;
+        }
