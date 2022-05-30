@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
             isColor = !isColor;
         }
-        
-        @Override
+    }
+    @Override
     protected void onResume() {
         super.onResume();
         sensorManager.registerListener(this,sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
